@@ -4,25 +4,35 @@ import { useState } from "react";
 
 export default function App() {
   //useState = estado do componente (HOOK)
-  const [quant, setQuant] = useState(0);
   const [email, setEmail] = useState("");
   const [senha, setSenha] = useState("");
 
   function handleClick(event) {
     event.preventDefault();
-    setQuant(quant + 1);
-    console.log(email);
+
+    const dados = {
+      email: email,
+      senha: senha,
+    };
+
+    console.log(dados);
   }
 
   function handleChange(event) {
-    setEmail(event.target.value);
+    if (event.target.id === "email") {
+      setEmail(event.target.value);
+    }
+
+    if (event.target.id === "password") {
+      setSenha(event.target.value);
+    }
   }
 
   return (
     <div className="bg-slate-300 h-screen flex justify-center items-center">
       <div className="bg-white w-fit shadow-md p-10 rounded-md">
         <h1 className="text-center font-bold text-2xl mb-3 text-green-400">
-          {quant}
+          Login
         </h1>
         <form className="flex flex-col gap-5">
           <Input
@@ -35,6 +45,7 @@ export default function App() {
             texto={"Senha: "}
             tipo={"password"}
             placeholder={"Digite aqui sua senha"}
+            digitar={handleChange}
           />
           <Button texto={"login"} acao={handleClick} />
         </form>
