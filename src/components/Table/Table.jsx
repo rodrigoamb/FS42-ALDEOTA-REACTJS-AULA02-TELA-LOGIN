@@ -1,36 +1,20 @@
+import { useEffect, useState } from "react";
+
 export default function Table() {
-  const tableItems = [
-    {
-      name: "Liam James",
-      email: "liamjames@example.com",
-      position: "Software engineer",
-      salary: "$100K",
-    },
-    {
-      name: "Olivia Emma",
-      email: "oliviaemma@example.com",
-      position: "Product designer",
-      salary: "$90K",
-    },
-    {
-      name: "William Benjamin",
-      email: "william.benjamin@example.com",
-      position: "Front-end developer",
-      salary: "$80K",
-    },
-    {
-      name: "Henry Theodore",
-      email: "henrytheodore@example.com",
-      position: "Laravel engineer",
-      salary: "$120K",
-    },
-    {
-      name: "Amelia Elijah",
-      email: "amelia.elijah@example.com",
-      position: "Open source manager",
-      salary: "$75K",
-    },
-  ];
+  const [tableItems, setTableItems] = useState([]);
+
+  async function fetchData() {
+    const response = await fetch("http://localhost:3001/myproducts");
+    const data = await response.json();
+
+    setTableItems(data);
+  }
+
+  useEffect(() => {
+    fetchData();
+  }, []);
+
+  console.log(tableItems);
 
   return (
     <div className="max-w-screen-xl mx-auto px-4 md:px-8">
