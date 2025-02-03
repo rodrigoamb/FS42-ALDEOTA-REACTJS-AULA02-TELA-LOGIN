@@ -4,7 +4,7 @@ export default function Table() {
   const [tableItems, setTableItems] = useState([]);
 
   async function fetchData() {
-    const response = await fetch("http://localhost:3001/myproducts");
+    const response = await fetch("http://localhost:3001/meusfuncionarios");
     const data = await response.json();
 
     setTableItems(data);
