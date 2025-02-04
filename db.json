@@ -1,27 +1,6 @@
 {
   "meusfuncionarios": [
     {
-      "id": "1",
-      "name": "Marcos Pereira",
-      "email": "marcosp@gmail.com",
-      "position": "Desenvolvedor Front-End",
-      "salary": "R$12.000,00"
-    },
-    {
-      "id": "2",
-      "name": "Alice Sampaio",
-      "email": "alice@gmail.com",
-      "position": "Desenvolvedor Back-End",
-      "salary": "R$15.000,00"
-    },
-    {
-      "id": "3",
-      "name": "Rafael Silva",
-      "email": "rafaelSilva@gmail.com",
-      "position": "Desenvolvedor Full-Stack",
-      "salary": "R$20.000,00"
-    },
-    {
       "id": "9ae7",
       "name": "Nayara Calenzo",
       "email": "nayara@gmail.com",

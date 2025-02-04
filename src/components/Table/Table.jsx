@@ -1,11 +1,16 @@
 import { useEffect, useState } from "react";
+import axios from "axios";
+import ModalWrapper from "../ModalWrapper/ModalWrapper.jsx";
+import DeleteContent from "../DeleteContent/DeleteContent.jsx";
 
 export default function Table() {
   const [tableItems, setTableItems] = useState([]);
+  const [open, setOpen] = useState(false);
+  const [itemToDelete, setItemToDelete] = useState({});
 
   async function fetchData() {
-    const response = await fetch("http://localhost:3001/meusfuncionarios");
-    const data = await response.json();
+    const response = await axios.get("http://localhost:3001/meusfuncionarios");
+    const data = await response.data;
 
     setTableItems(data);
   }
@@ -15,6 +20,11 @@ export default function Table() {
   }, []);
 
   console.log(tableItems);
+
+  function handleOpenModalDelete(item) {
+    setItemToDelete(item);
+    setOpen(true);
+  }
 
   return (
     <div className="max-w-screen-xl mx-auto px-4 md:px-8">
@@ -62,6 +72,7 @@ export default function Table() {
                     Editar
                   </a>
                   <button
+                    onClick={() => handleOpenModalDelete(item)}
                     href="javascript:void()"
                     className="py-2 leading-none px-3 font-medium text-red-600 hover:text-red-500 duration-150 hover:bg-gray-50 rounded-lg"
                   >
@@ -72,6 +83,9 @@ export default function Table() {
             ))}
           </tbody>
         </table>
+        <ModalWrapper open={open} setOpen={setOpen} itemToDelete={itemToDelete}>
+          <DeleteContent itemToDelete={itemToDelete} />
+        </ModalWrapper>
       </div>
     </div>
   );
