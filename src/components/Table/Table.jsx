@@ -10,7 +10,7 @@ export default function Table() {
 
   async function fetchData() {
     const response = await axios.get("http://localhost:3001/meusfuncionarios");
-    const data = await response.data;
+    const data = response.data;
 
     setTableItems(data);
   }
@@ -18,8 +18,6 @@ export default function Table() {
   useEffect(() => {
     fetchData();
   }, []);
-
-  console.log(tableItems);
 
   function handleOpenModalDelete(item) {
     setItemToDelete(item);
@@ -58,7 +56,7 @@ export default function Table() {
             </tr>
           </thead>
           <tbody className="text-gray-600 divide-y">
-            {tableItems.map((item, idx) => (
+            {tableItems?.map((item, idx) => (
               <tr key={idx}>
                 <td className="px-6 py-4 whitespace-nowrap">{item.name}</td>
                 <td className="px-6 py-4 whitespace-nowrap">{item.email}</td>

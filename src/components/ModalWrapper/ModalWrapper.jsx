@@ -11,14 +11,11 @@ export default function ModalWrapper({
   const router = useNavigate();
 
   async function handleDeleteFuncionario() {
-    console.log("Deletando funcionário", itemToDelete);
-
     const response = await axios.delete(
       `http://localhost:3001/meusfuncionarios/${itemToDelete.id}`
     );
 
     if (response.status === 200) {
-      console.log("Funcionário deletado com sucesso!");
       router(0);
       setOpen(false);
     }
