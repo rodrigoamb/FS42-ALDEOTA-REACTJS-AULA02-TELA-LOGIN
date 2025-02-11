@@ -6,6 +6,13 @@
       "email": "nayara@gmail.com",
       "position": "Desenvolvedor Full-Stack",
       "salary": "R$30.000,00"
+    },
+    {
+      "id": "49f9",
+      "name": "Rodrigo Medeiros",
+      "email": "rodrigo@mail.com",
+      "position": "Programador",
+      "salary": "R$1.450,00"
     }
   ]
 }
