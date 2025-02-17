@@ -4,6 +4,7 @@ import ModalWrapper from "../ModalWrapper/ModalWrapper.jsx";
 import DeleteContent from "../DeleteContent/DeleteContent.jsx";
 import SlideOverWrapper from "../SlideOverWrapper/SlideOverWrapper.jsx";
 import ContentAdd from "../ContentAdd/ContentAdd.jsx";
+import { Link } from "react-router";
 
 export default function Table() {
   const [tableItems, setTableItems] = useState([]);
@@ -72,12 +73,12 @@ export default function Table() {
                 <td className="px-6 py-4 whitespace-nowrap">{item.position}</td>
                 <td className="px-6 py-4 whitespace-nowrap">{item.salary}</td>
                 <td className="text-right px-6 whitespace-nowrap">
-                  <a
-                    href="javascript:void()"
+                  <Link
+                    to={`/funcionarios/${item.id}`}
                     className="py-2 px-3 font-medium text-indigo-600 hover:text-indigo-500 duration-150 hover:bg-gray-50 rounded-lg"
                   >
                     Editar
-                  </a>
+                  </Link>
                   <button
                     onClick={() => handleOpenModalDelete(item)}
                     href="javascript:void()"
