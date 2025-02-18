@@ -1,4 +1,10 @@
-export default function Input({ texto, tipo, placeholder, digitar }) {
+export default function Input({
+  texto,
+  tipo,
+  placeholder,
+  digitar,
+  defaultValue,
+}) {
   return (
     <>
       <label htmlFor={tipo}>{texto}</label>
@@ -9,6 +15,7 @@ export default function Input({ texto, tipo, placeholder, digitar }) {
         name={tipo}
         placeholder={placeholder}
         onChange={digitar}
+        defaultValue={defaultValue}
       />
     </>
   );
