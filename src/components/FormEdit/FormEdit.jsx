@@ -3,7 +3,7 @@ import Input from "../Input/Input.jsx";
 export default function FormEdit({ funcionario }) {
   return (
     <div>
-      <form className="flex flex-col gap-2">
+      <form className="flex flex-col gap-2 w-[550px]">
         <Input
           texto={"Nome"}
           tipo={"text"}
@@ -32,10 +32,10 @@ export default function FormEdit({ funcionario }) {
           defaultValue={funcionario.salary}
           placeholder={"Digite o salário do funcionário"}
         />
-        <div className="flex gap-5 items-center justify-between">
+        <div className="flex flex-row gap-5 items-center justify-between mt-5">
           <button
             type="button"
-            className="text-white bg-gray-800 px-6 py-2 rounded-md hover:bg-gray-600 mr-5 mt-5 w-64"
+            className="text-white bg-gray-800 px-6 py-2 rounded-md hover:bg-gray-600 mr-5  w-64"
           >
             Cancelar Edição
           </button>
