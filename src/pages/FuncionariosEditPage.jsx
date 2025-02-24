@@ -32,7 +32,10 @@ export default function FuncionariosEditPage() {
       <h1 className="text-2xl font-bold mb-3">Editar Funcionário:</h1>
 
       {formEditIsVisible ? (
-        <FormEdit funcionario={funcionario} />
+        <FormEdit
+          funcionario={funcionario}
+          setFormEditIsVisible={setFormEditIsVisible}
+        />
       ) : (
         <div>
           <p>Nome: {funcionario.name}</p>
