@@ -10,13 +10,20 @@ export default function FuncionariosEditPage() {
   const { id } = useParams();
 
   const [funcionario, setFuncionario] = useState({});
+  const [error, setError] = useState();
+  const [editError, setEditError] = useState(null);
 
   async function fetchDataFuncionario() {
-    const response = await axios.get(
-      `http://localhost:3001/meusfuncionarios/${id}`
-    );
-    const data = response.data;
-    setFuncionario(data);
+    try {
+      const response = await axios.get(
+        `http://localhost:3001/meusfuncionarios/${id}`
+      );
+      const data = response.data;
+      setFuncionario(data);
+    } catch (error) {
+      setError(error);
+      console.error(error);
+    }
   }
 
   useEffect(() => {
@@ -35,6 +42,7 @@ export default function FuncionariosEditPage() {
         <FormEdit
           funcionario={funcionario}
           setFormEditIsVisible={setFormEditIsVisible}
+          setEditError={setEditError}
         />
       ) : (
         <div>
@@ -57,6 +65,12 @@ export default function FuncionariosEditPage() {
             </button>
           </div>
         </div>
+      )}
+
+      {error && <p className="text-red-500 mt-5">Erro: {error.message}</p>}
+
+      {editError && (
+        <p className="text-red-500 mt-5">Erro: {editError.message}</p>
       )}
     </div>
   );

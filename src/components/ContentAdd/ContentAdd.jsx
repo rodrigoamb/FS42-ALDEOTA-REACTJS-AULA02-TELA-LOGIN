@@ -2,7 +2,7 @@ import { useState } from "react";
 import axios from "axios";
 import { useNavigate } from "react-router";
 
-export default function ContentAdd({ setModalAddIsVisible }) {
+export default function ContentAdd({ setModalAddIsVisible, setErrorAdd }) {
   const [name, setName] = useState();
   const [email, setEmail] = useState();
   const [position, setPosition] = useState();
@@ -20,14 +20,20 @@ export default function ContentAdd({ setModalAddIsVisible }) {
       salary,
     };
 
-    const response = await axios.post(
-      "http://localhost:3001/meusfuncionarios",
-      novoFuncionario
-    );
+    try {
+      const response = await axios.post(
+        "http://localhost:3001/meusfuncionarios",
+        novoFuncionario
+      );
 
-    if (response.status === 201) {
+      if (response.status === 201) {
+        router(0);
+      }
+    } catch (error) {
+      console.error(error);
+      setErrorAdd(error);
+    } finally {
       setModalAddIsVisible(false);
-      router(0);
     }
   }
 

@@ -1,13 +1,6 @@
 {
   "meusfuncionarios": [
     {
-      "name": "Nayara Silva Moura",
-      "email": "nayara@hotmail.com",
-      "position": "Desenvolvedora Front End",
-      "salary": "R$10.000,00",
-      "id": "9ae7"
-    },
-    {
       "id": "49f9",
       "name": "Rodrigo Medeiros",
       "email": "rodrigo@mail.com",

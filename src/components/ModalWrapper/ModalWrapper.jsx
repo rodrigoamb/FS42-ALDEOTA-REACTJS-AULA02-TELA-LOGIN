@@ -7,16 +7,23 @@ export default function ModalWrapper({
   open,
   setOpen,
   itemToDelete,
+  setErrorDelete,
 }) {
   const router = useNavigate();
 
   async function handleDeleteFuncionario() {
-    const response = await axios.delete(
-      `http://localhost:3001/meusfuncionarios/${itemToDelete.id}`
-    );
+    try {
+      const response = await axios.delete(
+        `http://localhost:3001/meusfuncionarios/${itemToDelete.id}`
+      );
 
-    if (response.status === 200) {
-      router(0);
+      if (response.status === 200) {
+        router(0);
+      }
+    } catch (error) {
+      setErrorDelete(error);
+      console.error(error.message);
+    } finally {
       setOpen(false);
     }
   }

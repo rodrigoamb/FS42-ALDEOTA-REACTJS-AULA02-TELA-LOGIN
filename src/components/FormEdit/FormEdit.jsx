@@ -3,7 +3,11 @@ import Input from "../Input/Input.jsx";
 import { useState } from "react";
 import { useNavigate } from "react-router";
 
-export default function FormEdit({ funcionario, setFormEditIsVisible }) {
+export default function FormEdit({
+  funcionario,
+  setFormEditIsVisible,
+  setEditError,
+}) {
   const router = useNavigate();
 
   const [name, setName] = useState(funcionario.name);
@@ -21,13 +25,18 @@ export default function FormEdit({ funcionario, setFormEditIsVisible }) {
       salary,
     };
 
-    const response = await axios.put(
-      `http://localhost:3001/meusfuncionarios/${funcionario.id}`,
-      editedFuncionario
-    );
+    try {
+      const response = await axios.put(
+        `http://localhost:3001/meusfuncionarios/${funcionario.id}`,
+        editedFuncionario
+      );
 
-    if (response.status === 200) {
-      router(0);
+      if (response.status === 200) {
+        router(0);
+      }
+    } catch (error) {
+      console.error(error);
+      setEditError(error);
     }
   }
 
